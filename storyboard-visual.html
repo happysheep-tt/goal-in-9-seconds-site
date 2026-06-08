@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goal in 9 Seconds Storyboard Visual</title>
+  <style>
+    :root {
+      --bg: #06101c;
+      --bg-2: #0a1728;
+      --panel: rgba(9, 18, 33, 0.82);
+      --panel-2: rgba(12, 24, 42, 0.92);
+      --line: rgba(158, 211, 255, 0.16);
+      --text: #f5efe5;
+      --muted: #9db2c8;
+      --cyan: #85dbff;
+      --blue: #2eb9ff;
+      --amber: #ffba63;
+      --red: #ff6f78;
+      --green: #8de5c0;
+      --shadow: 0 28px 70px rgba(1, 7, 16, 0.45);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 14% 8%, rgba(46, 185, 255, 0.18), transparent 24%),
+        radial-gradient(circle at 86% 18%, rgba(255, 111, 120, 0.11), transparent 18%),
+        linear-gradient(180deg, #091525 0%, #050d17 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.72), transparent 86%);
+    }
+
+    .page {
+      width: min(1400px, calc(100vw - 48px));
+      margin: 0 auto;
+      padding: 30px 0 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 36px;
+      padding: 34px 34px 28px;
+      border: 1px solid rgba(158, 211, 255, 0.16);
+      background:
+        linear-gradient(135deg, rgba(12, 23, 41, 0.92), rgba(6, 13, 24, 0.9)),
+        radial-gradient(circle at 20% 20%, rgba(133, 219, 255, 0.08), transparent 34%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -6%;
+      bottom: -24%;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(46, 185, 255, 0.18), transparent 72%);
+      filter: blur(12px);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(46px, 8vw, 84px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 26px;
+      margin-top: 22px;
+      align-items: end;
+    }
+
+    .hero-copy {
+      margin: 0;
+      max-width: 720px;
+      color: #d4dfec;
+      font-size: 18px;
+      line-height: 1.72;
+    }
+
+    .signal {
+      justify-self: end;
+      max-width: 320px;
+      width: 100%;
+      border-radius: 24px;
+      padding: 18px;
+      border: 1px solid rgba(158, 211, 255, 0.16);
+      background: rgba(6, 13, 24, 0.7);
+      backdrop-filter: blur(16px);
+    }
+
+    .signal small {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .signal strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1.02;
+      margin-bottom: 10px;
+    }
+
+    .signal p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .rhythm {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .rhythm-step {
+      border-radius: 22px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: rgba(4, 11, 21, 0.56);
+    }
+
+    .rhythm-step .time {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--cyan);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .rhythm-step h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.08;
+    }
+
+    .rhythm-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.56;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin: 40px 0 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 0.98;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 520px;
+      text-align: right;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.68;
+    }
+
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .shot {
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .shot-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px 0;
+    }
+
+    .shot-label {
+      color: var(--amber);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .shot-time {
+      color: var(--cyan);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+    }
+
+    .frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      margin: 14px 18px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.38)),
+        linear-gradient(140deg, #0b1727 0%, #142840 52%, #08131f 100%);
+      box-shadow: inset 0 -70px 90px rgba(0,0,0,0.44);
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 28%, rgba(0,0,0,0.22) 100%),
+        repeating-linear-gradient(90deg, transparent 0 12%, rgba(255,255,255,0.028) 12.1% 12.25%);
+      mix-blend-mode: screen;
+    }
+
+    .arena-glow {
+      position: absolute;
+      left: 6%;
+      top: 10%;
+      width: 30%;
+      height: 34%;
+      background: radial-gradient(circle, rgba(133, 219, 255, 0.42), rgba(133, 219, 255, 0.12) 36%, transparent 64%);
+      filter: blur(12px);
+    }
+
+    .screen {
+      position: absolute;
+      left: 8%;
+      top: 12%;
+      width: 21%;
+      height: 16%;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(145, 234, 255, 0.78), rgba(67, 128, 200, 0.18));
+      box-shadow: 0 0 22px rgba(133, 219, 255, 0.24);
+    }
+
+    .crowd {
+      position: absolute;
+      bottom: 0;
+      left: 40%;
+      width: 44%;
+      height: 38%;
+      border-radius: 30px 30px 0 0;
+      background:
+        linear-gradient(180deg, rgba(21, 39, 62, 0.2), rgba(8, 15, 28, 0.94)),
+        radial-gradient(circle at 22% 18%, rgba(255,255,255,0.08), transparent 16%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+      opacity: 0.84;
+    }
+
+    .figure {
+      position: absolute;
+      bottom: 0;
+      left: 22%;
+      width: 22%;
+      height: 60%;
+      border-radius: 38px 38px 0 0;
+      background:
+        radial-gradient(circle at 52% 14%, rgba(255,255,255,0.18), transparent 12%),
+        radial-gradient(circle at 50% 28%, rgba(126, 203, 255, 0.24), transparent 20%),
+        linear-gradient(180deg, rgba(35, 76, 118, 0.32), rgba(8, 15, 28, 0.92));
+    }
+
+    .figure::before {
+      content: "";
+      position: absolute;
+      left: 28%;
+      top: 4%;
+      width: 44%;
+      height: 18%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 238, 222, 0.22), rgba(255, 238, 222, 0.04) 66%, transparent 70%);
+    }
+
+    .focus {
+      position: absolute;
+      right: 18%;
+      top: 18%;
+      width: 32%;
+      height: 48%;
+      border-radius: 18px;
+      border: 2px solid rgba(133, 219, 255, 0.84);
+      box-shadow: 0 0 0 1px rgba(133, 219, 255, 0.08), 0 0 24px rgba(133, 219, 255, 0.14);
+    }
+
+    .scan {
+      position: absolute;
+      left: -10%;
+      top: 58%;
+      width: 56%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.74), transparent);
+      transform: rotate(-8deg);
+      opacity: 0.34;
+    }
+
+    .caption {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(5, 11, 20, 0.72);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .goal-frame {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.34)),
+        linear-gradient(145deg, #170f1f 0%, #361625 54%, #121b2d 100%);
+    }
+
+    .goal-frame .arena-glow {
+      background: radial-gradient(circle, rgba(255, 186, 99, 0.5), rgba(255, 111, 120, 0.16) 38%, transparent 68%);
+    }
+
+    .goal-frame .focus {
+      border-color: rgba(255, 186, 99, 0.86);
+      box-shadow: 0 0 0 1px rgba(255, 186, 99, 0.08), 0 0 28px rgba(255, 186, 99, 0.18);
+    }
+
+    .goal-frame .scan {
+      top: 46%;
+      width: 70%;
+      opacity: 0.7;
+      transform: rotate(2deg);
+      background: linear-gradient(90deg, transparent, rgba(255, 186, 99, 0.94), transparent);
+    }
+
+    .goal-frame .figure {
+      left: 16%;
+      height: 74%;
+      width: 20%;
+    }
+
+    .goal-frame .crowd {
+      left: 44%;
+      width: 34%;
+      height: 44%;
+    }
+
+    .after-frame {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.36)),
+        linear-gradient(145deg, #0b1b2b 0%, #173045 54%, #091420 100%);
+    }
+
+    .after-frame .arena-glow {
+      background: radial-gradient(circle, rgba(141, 229, 192, 0.34), rgba(133, 219, 255, 0.14) 36%, transparent 66%);
+    }
+
+    .after-frame .crowd {
+      left: 32%;
+      width: 52%;
+      height: 46%;
+    }
+
+    .after-frame .figure {
+      left: 18%;
+      width: 16%;
+      height: 40%;
+    }
+
+    .shot-body {
+      padding: 18px 20px 20px;
+    }
+
+    .shot-body h3 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .shot-body p {
+      margin: 0 0 14px;
+      color: #d3deea;
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .fact {
+      border-radius: 16px;
+      padding: 12px 13px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .fact span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--cyan);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .fact strong {
+      color: #dce7f2;
+      font-size: 13px;
+      line-height: 1.58;
+      font-weight: 500;
+    }
+
+    .prompt {
+      border-radius: 18px;
+      padding: 14px 15px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(5, 11, 20, 0.74);
+      color: #d8e5f2;
+      font-size: 12px;
+      line-height: 1.72;
+      font-family: "SFMono-Regular", "Menlo", monospace;
+    }
+
+    .bottom {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .panel {
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      color: var(--amber);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .panel ol, .panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .panel li {
+      margin-bottom: 10px;
+      color: #d9e4ef;
+      font-size: 14px;
+      line-height: 1.68;
+    }
+
+    .panel p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.72;
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid, .shots, .bottom { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 10px; text-align: left; }
+      .signal { justify-self: start; }
+      .rhythm { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .page { width: min(100vw - 22px, 100%); padding-top: 14px; }
+      .hero { padding: 22px 18px 18px; border-radius: 28px; }
+      .rhythm, .facts, .shots, .bottom { grid-template-columns: 1fr; }
+      .shot-body h3 { font-size: 24px; }
+      .frame { margin: 12px 12px 0; }
+      .shot-top, .shot-body, .panel { padding-left: 14px; padding-right: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">DJI portfolio / storyboard visual / previs page</p>
+      <h1>Goal in 9 Seconds</h1>
+      <div class="hero-grid">
+        <p class="hero-copy">
+          这页把 `挑战结构`、`镜头节奏`、`关键帧感` 和 `AIGC prompt` 合成到一张真正能放进作品集的视觉分镜页里。目标不是伪装成已经拍完的广告，而是做出一个足够清楚、足够有质感的品牌提案预演。
+        </p>
+        <aside class="signal">
+          <small>Demo Positioning</small>
+          <strong>15s Previs Sample</strong>
+          <p>一条定义格式的示范样片。先让人看懂 `3s before / 3s during / 3s after`，再让这条 sample 成为 creator toolkit 的视觉入口。</p>
+        </aside>
+      </div>
+      <div class="rhythm">
+        <article class="rhythm-step"><span class="time">0-2s</span><h3>Hook</h3><p>先问问题，让格式感立刻成立。</p></article>
+        <article class="rhythm-step"><span class="time">2-5s</span><h3>Before</h3><p>空气发紧，情绪被压住，画面更稳更近。</p></article>
+        <article class="rhythm-step"><span class="time">5-8s</span><h3>During</h3><p>进球爆发，动作峰值必须准时出现。</p></article>
+        <article class="rhythm-step"><span class="time">8-11s</span><h3>After</h3><p>拥抱、笑、撞肩，让情绪多滚半拍。</p></article>
+        <article class="rhythm-step"><span class="time">11-15s</span><h3>CTA</h3><p>不是结束，而是把它交给更多球迷去复制。</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Visual Storyboard</h2>
+        <p>每张 shot card 都把画面示意、声音、产品感知点和生成提示词绑在一起，方便你下一步直接做 animatic 或继续精修成 Figma / Keynote 页面。</p>
+      </div>
+
+      <div class="shots">
+        <article class="shot">
+          <div class="shot-top">
+            <span class="shot-label">Shot 01 / Hook</span>
+            <span class="shot-time">0-2s</span>
+          </div>
+          <div class="frame">
+            <div class="arena-glow"></div>
+            <div class="screen"></div>
+            <div class="figure"></div>
+            <div class="focus"></div>
+            <div class="caption">Can your goal reaction fit in 9 seconds?</div>
+          </div>
+          <div class="shot-body">
+            <h3>TV Glow Face Close-Up</h3>
+            <p>第一镜不先给全景，而是直接贴近人物脸部。屏幕蓝光打到脸上，观众先被带进那口“要进了”的气里。</p>
+            <div class="facts">
+              <div class="fact"><span>Sound</span><strong>低频氛围 + 远处解说声，压着不爆。</strong></div>
+              <div class="fact"><span>DJI Cue</span><strong>低光近景可用、人物是主角、镜头稳。</strong></div>
+            </div>
+            <div class="prompt">young football fan close-up, face lit by blue television glow, dark living room, tense expression, cinematic watch party atmosphere, premium handheld camera brand film, realistic lighting, shallow depth of field</div>
+          </div>
+        </article>
+
+        <article class="shot">
+          <div class="shot-top">
+            <span class="shot-label">Shot 02 / Before</span>
+            <span class="shot-time">2-3.5s</span>
+          </div>
+          <div class="frame">
+            <div class="arena-glow"></div>
+            <div class="screen"></div>
+            <div class="figure" style="left:20%;width:18%;height:44%;"></div>
+            <div class="crowd"></div>
+            <div class="caption">3 seconds before</div>
+          </div>
+          <div class="shot-body">
+            <h3>Snack Grip / Frozen Room</h3>
+            <p>拍手、肩、半站起的身体，让紧张感从小动作里冒出来。这镜要像房间突然凝住，而不是普通生活碎片。</p>
+            <div class="facts">
+              <div class="fact"><span>Sound</span><strong>呼吸声更清楚，解说员情绪开始往上推。</strong></div>
+              <div class="fact"><span>Camera Feel</span><strong>慢推，稳住，给后面动作峰值留空间。</strong></div>
+            </div>
+            <div class="prompt">close-up of hand gripping snack bag during football watch party, projector glow in living room, friends frozen in tension, indoor night scene, documentary realism, stabilized camera aesthetic</div>
+          </div>
+        </article>
+
+        <article class="shot">
+          <div class="shot-top">
+            <span class="shot-label">Shot 03 / Before</span>
+            <span class="shot-time">3.5-5s</span>
+          </div>
+          <div class="frame">
+            <div class="arena-glow"></div>
+            <div class="screen"></div>
+            <div class="figure" style="left:34%;width:24%;height:62%;"></div>
+            <div class="focus" style="right:22%;"></div>
+            <div class="caption">3 seconds before</div>
+          </div>
+          <div class="shot-body">
+            <h3>Lean-In Anticipation</h3>
+            <p>前倾的肩线、微张的嘴、紧盯屏幕的眼神，是整个 before 段最紧的一下。这里要像呼吸被按住的最后一拍。</p>
+            <div class="facts">
+              <div class="fact"><span>Text</span><strong>继续重复 before，让结构变得非常好懂。</strong></div>
+              <div class="fact"><span>Product Read</span><strong>人物反应被追住，比拍电视更像 Pocket 3 的使用逻辑。</strong></div>
+            </div>
+            <div class="prompt">football fan leaning toward the TV before a goal, anxious expression, dim indoor watch party, emotional anticipation, cinematic social short video frame, realistic low light</div>
+          </div>
+        </article>
+
+        <article class="shot">
+          <div class="shot-top">
+            <span class="shot-label">Shot 04 / During</span>
+            <span class="shot-time">5-7s</span>
+          </div>
+          <div class="frame goal-frame">
+            <div class="arena-glow"></div>
+            <div class="figure"></div>
+            <div class="crowd"></div>
+            <div class="focus"></div>
+            <div class="scan"></div>
+            <div class="caption">3 seconds during</div>
+          </div>
+          <div class="shot-body">
+            <h3>Goal Burst / Jump Up</h3>
+            <p>必须切在真正的爆发瞬间，而不是预备动作。人物从沙发弹起、冲向朋友、身体脱离原位，整条片的情绪峰值就靠这一镜。</p>
+            <div class="facts">
+              <div class="fact"><span>Sound</span><strong>欢呼直接炸开，不能再压。</strong></div>
+              <div class="fact"><span>DJI Cue</span><strong>强动作下仍保住可用画面，就是产品存在感。</strong></div>
+            </div>
+            <div class="prompt">explosive football goal reaction, fan jumping up from couch, friends shouting, dynamic movement, stabilized handheld chase feeling, premium creator content style, realistic sports emotion</div>
+          </div>
+        </article>
+
+        <article class="shot">
+          <div class="shot-top">
+            <span class="shot-label">Shot 05 / After</span>
+            <span class="shot-time">7-9s</span>
+          </div>
+          <div class="frame after-frame">
+            <div class="arena-glow"></div>
+            <div class="figure"></div>
+            <div class="crowd"></div>
+            <div class="scan" style="top:62%;width:42%;opacity:0.28;"></div>
+            <div class="caption">3 seconds after</div>
+          </div>
+          <div class="shot-body">
+            <h3>Hug / Laugh / Spillover</h3>
+            <p>不要进球之后立刻停。让观众多看半拍拥抱、大笑、摔回沙发，这些“余震动作”比口号更能说明反应是真的。</p>
+            <div class="facts">
+              <div class="fact"><span>Edit</span><strong>这里可插一次 0.5 秒慢动作，把质感拉出来。</strong></div>
+              <div class="fact"><span>Emotion</span><strong>重在真实失控，不要排练感。</strong></div>
+            </div>
+            <div class="prompt">group of friends hugging and laughing after football goal, joyful chaos, home watch party celebration, cinematic creator ad look, realistic motion blur, high emotional energy</div>
+          </div>
+        </article>
+
+        <article class="shot">
+          <div class="shot-top">
+            <span class="shot-label">Shot 06 / CTA</span>
+            <span class="shot-time">9-15s</span>
+          </div>
+          <div class="frame after-frame">
+            <div class="arena-glow"></div>
+            <div class="screen" style="left:auto;right:8%;"></div>
+            <div class="figure" style="left:36%;width:24%;height:58%;"></div>
+            <div class="focus" style="right:24%;"></div>
+            <div class="caption">Goal in 9 Seconds / Shot on Osmo Pocket 3 / Show us yours</div>
+          </div>
+          <div class="shot-body">
+            <h3>Breath-Back Close-Up + End Card</h3>
+            <p>不是产品硬切大特写，而是先记住那张刚从欢呼里退出来的脸，再用极简字卡把 challenge 和产品落上去。</p>
+            <div class="facts">
+              <div class="fact"><span>CTA</span><strong>Show us yours. 一条 sample 自然通向 UGC 邀请。</strong></div>
+              <div class="fact"><span>Finish</span><strong>音乐收束，页面干净结束，不拖泥带水。</strong></div>
+            </div>
+            <div class="prompt">close-up after celebration, football fan smiling in disbelief, warm emotional release, stylish campaign end card composition, premium sports creator toolkit visual, clean text space</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <article class="panel">
+        <h3>How To Turn This Into An Animatic</h3>
+        <ol>
+          <li>每个镜头先用对应 prompt 生成 3 到 4 张图，优先挑表情统一、光线统一、视角统一的一张。</li>
+          <li>把 6 张关键帧拉进剪映、CapCut 或 Premiere，单张停留 `0.8-1.2 秒`。</li>
+          <li>对静帧做轻微推拉和平移，模拟真实镜头，而不是简单翻页式切换。</li>
+          <li>`Shot 04` 和 `Shot 05` 可加 2 到 3 个快切，维持进球爆发的社媒速度感。</li>
+          <li>最后只加一层解说声、一层欢呼声、统一字幕样式，就能形成提案级 demo。</li>
+        </ol>
+        <p>如果你后面想继续往成片推进，这一页可以继续升级成“真实 AI keyframe 图 + 分镜编号 + 剪辑节拍条”的版本。</p>
+      </article>
+
+      <article class="panel">
+        <h3>Why This Still Feels DJI</h3>
+        <ul>
+          <li>镜头重心始终是人物反应，而不是赛事画面本身。</li>
+          <li>产品卖点通过拍法被感知到，不需要单独塞一页功能清单。</li>
+          <li>challenge 结构清楚，天然能继续转成 creator toolkit 和海外社群玩法。</li>
+          <li>AIGC 只承担 `预演与提效`，不会喧宾夺主变成技术炫耀。</li>
+        </ul>
+        <p>这页已经可以直接作为作品集中的 `Storyboard / Previs` 页面，也适合继续导进 Figma、Keynote 或 PPT 做最终排版。</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
