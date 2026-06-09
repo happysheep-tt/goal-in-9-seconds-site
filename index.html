@@ -156,45 +156,6 @@
       color: #d8e4f0;
     }
 
-    .share-bar {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 18px;
-      margin-top: 22px;
-    }
-
-    .share-card {
-      border-radius: 22px;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .share-card span {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--cyan);
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .share-card strong {
-      display: block;
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.55;
-      font-weight: 600;
-      word-break: break-word;
-    }
-
-    .share-card p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.66;
-    }
-
     .section-head {
       display: flex;
       justify-content: space-between;
@@ -494,7 +455,7 @@
     }
 
     @media (max-width: 1120px) {
-      .hero-grid, .grid, .bottom, .share-bar { grid-template-columns: 1fr; }
+      .hero-grid, .grid, .bottom { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 10px; text-align: left; }
     }
@@ -529,18 +490,6 @@
         <span class="pill">Osmo Pocket 3</span>
         <span class="pill">9s Creator Challenge</span>
         <span class="pill">AIGC Previs Workflow</span>
-      </div>
-      <div class="share-bar">
-        <div class="share-card">
-          <span>Share Link</span>
-          <strong>https://happysheep-tt.github.io/goal-in-9-seconds-site/</strong>
-          <p>这一页可以直接发给面试官。打开后先看 proposal，再点 storyboard，就能顺着讲完整个 case。</p>
-        </div>
-        <div class="share-card">
-          <span>Suggested Intro</span>
-          <strong>Mini campaign case for DJI: strategy, creator toolkit, storyboard, and AIGC previs workflow.</strong>
-          <p>如果你发链接时想配一句说明，这句就够了，简洁而且不像在过度推销自己。</p>
-        </div>
       </div>
     </section>
 
