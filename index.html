@@ -411,58 +411,15 @@
       background: rgba(255,255,255,0.04);
     }
 
-    .bottom {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 22px;
-      margin-top: 24px;
-    }
-
-    .panel {
-      border-radius: 28px;
-      padding: 22px;
-      border: 1px solid var(--line);
-      background: var(--panel-strong);
-      box-shadow: var(--shadow);
-    }
-
-    .panel h3 {
-      margin: 0 0 12px;
-      color: var(--amber);
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    .panel ol,
-    .panel ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    .panel li {
-      margin-bottom: 10px;
-      color: #d9e4f0;
-      font-size: 14px;
-      line-height: 1.68;
-    }
-
-    .panel p {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.72;
-    }
-
     @media (max-width: 1120px) {
-      .hero-grid, .grid, .bottom { grid-template-columns: 1fr; }
+      .hero-grid, .grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .section-head p { margin-top: 10px; text-align: left; }
     }
 
     @media (max-width: 760px) {
       .page { width: min(100vw - 22px, 100%); padding-top: 14px; }
-      .hero, .card, .panel { border-radius: 24px; padding-left: 16px; padding-right: 16px; }
+      .hero, .card { border-radius: 24px; padding-left: 16px; padding-right: 16px; }
       .meta, .proposal .mini-flow, .storyboard .mini-strip { grid-template-columns: 1fr; }
       .card-top, .card-body { padding-left: 16px; padding-right: 16px; }
       .preview { margin-left: 14px; margin-right: 14px; }
@@ -554,26 +511,6 @@
       </div>
     </section>
 
-    <section class="bottom">
-      <article class="panel">
-        <h3>Recommended Interview Flow</h3>
-        <ol>
-          <li>先用 Proposal 页讲为什么选 `Osmo Pocket 3 x 世界杯观赛反应` 这个切口。</li>
-          <li>再讲 challenge 不是一条片，而是一个 creator toolkit。</li>
-          <li>切到 Storyboard 页，展示你如何用 AIGC 把它快速推进到分镜和预演样片。</li>
-          <li>最后补一句：AI 在这里承担的是提效和预演，而不是喧宾夺主替代创意判断。</li>
-        </ol>
-      </article>
-      <article class="panel">
-        <h3>Share Notes</h3>
-        <ul>
-          <li>这个目录已经适合整包发布成一个静态分享链接。</li>
-          <li>入口文件是 `index.html`，部署后面试官打开就是总入口。</li>
-          <li>子页面分别是 `proposal-visual.html` 和 `storyboard-visual.html`。</li>
-        </ul>
-        <p>这一版已经更像一个适合外发的 case study 入口，而不是文件目录。发链接时，你只需要补一句简短说明即可。</p>
-      </article>
-    </section>
   </main>
 </body>
 </html>
